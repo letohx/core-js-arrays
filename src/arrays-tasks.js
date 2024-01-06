@@ -333,8 +333,14 @@ function calculateBalance(arr) {
  *    createChunks(['a', 'b', 'c', 'd', 'e'], 2) => [['a', 'b'], ['c', 'd'], ['e']]
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
-function createChunks(/* arr, chunkSize */) {
-  throw new Error('Not implemented');
+function createChunks(arr, chunkSize) {
+  const numChunks = Math.ceil(arr.length / chunkSize);
+  const newArr = new Array(numChunks).fill([]);
+  const result = newArr.map((x, i) =>
+    arr.slice(chunkSize * i, i * chunkSize + chunkSize)
+  );
+
+  return result;
 }
 
 /**
@@ -349,8 +355,11 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  const arr = new Array(len * 2).fill(0);
+  const resultArr = arr.map((x, index) => index);
+
+  return resultArr.filter((item) => item % 2);
 }
 
 /**
@@ -365,8 +374,8 @@ function generateOdds(/* len */) {
  *   getElementByIndices(['one','two','three'], [2]) => 'three'  (arr[2])
  *   getElementByIndices([[[ 1, 2, 3]]], [ 0, 0, 1 ]) => 2        (arr[0][0][1])
  */
-function getElementByIndices(/* arr, indices */) {
-  throw new Error('Not implemented');
+function getElementByIndices(arr, indices) {
+  return indices.reduce((result, curIndex) => result[curIndex], arr);
 }
 
 /**
